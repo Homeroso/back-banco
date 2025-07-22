@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cuenta_bancaria {
+  titular_documento String   @id @db.VarChar(20)
+  titular_nombre    String   @db.VarChar(100)
+  saldo             Decimal  @db.Decimal(15, 2)
+  fecha_apertura    DateTime @default(dbgenerated("CURRENT_DATE")) @db.Date
+}
+
+model factura {
+  transactionid String   @id @db.VarChar(255)
+  cedula        String?  @db.VarChar(255)
+  estado_trans  String?  @db.VarChar(50)
+  precio_total  Decimal? @db.Decimal(10, 2)
+}
