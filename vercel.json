@@ -5,9 +5,5 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "/index.js" }
-  ],
-  "scripts": {
-  "prisma:generate": "prisma generate",
-  "vercel-build": "npm run prisma:generate"
-}
+  ]
 }
